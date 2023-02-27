@@ -6,7 +6,9 @@
 </p>
 
 
-# Homebridge Platform Plugin Template
+# Homebridge-Plugin-Optoma
+
+** Work in Progess **
 
 This is a template Homebridge platform plugin and can be used as a base to help you get started developing your own plugin.
 
@@ -160,10 +162,10 @@ npm version prepatch --preid beta
 npm publish --tag=beta
 ```
 
-Users can then install the  *beta* version by appending `@beta` to the install command, for example:
+Users can then install the  *beta* version by appending `@beta` to the install command, for Example:
 
 ```
-sudo npm install -g homebridge-example-plugin@beta
+sudo npm install -g homebridge-optoma-plugin@beta
 ```
 
 

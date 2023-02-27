@@ -1,26 +1,26 @@
 import { CharacteristicValue, PlatformAccessory, Service } from "homebridge";
 
-import { ExampleHomebridgePlatform } from "./platform";
+import { OptomaHomebridgePlatform } from "./platform";
 
 /**
  * Platform Accessory
  * An instance of this class is created for each accessory your platform registers
  * Each accessory may expose multiple services of different service types.
  */
-export class ExamplePlatformAccessory {
+export class OptomaPlatformAccessory {
   private service: Service;
 
   /**
-   * These are just used to create a working example
+   * These are just used to create a working Optoma
    * You should implement your own code to track the state of your accessory
    */
-  private exampleStates = {
+  private OptomaStates = {
     On: false,
     Brightness: 100,
   };
 
   constructor(
-    private readonly platform: ExampleHomebridgePlatform,
+    private readonly platform: OptomaHomebridgePlatform,
     private readonly accessory: PlatformAccessory
   ) {
     // set accessory information
@@ -43,10 +43,10 @@ export class ExamplePlatformAccessory {
       this.accessory.addService(this.platform.Service.Lightbulb);
 
     // set the service name, this is what is displayed as the default name on the Home app
-    // in this example we are using the name we stored in the `accessory.context` in the `discoverDevices` method.
+    // in this Optoma we are using the name we stored in the `accessory.context` in the `discoverDevices` method.
     this.service.setCharacteristic(
       this.platform.Characteristic.Name,
-      accessory.context.device.exampleDisplayName
+      accessory.context.device.OptomaDisplayName
     );
 
     // each service must implement at-minimum the "required characteristics" for the given service type
@@ -102,7 +102,7 @@ export class ExamplePlatformAccessory {
      */
     let motionDetected = false;
     setInterval(() => {
-      // EXAMPLE - inverse the trigger
+      // Example - inverse the trigger
       motionDetected = !motionDetected;
 
       // push the new value to HomeKit
@@ -132,7 +132,7 @@ export class ExamplePlatformAccessory {
    */
   async setOn(value: CharacteristicValue) {
     // implement your own code to turn your device on/off
-    this.exampleStates.On = value as boolean;
+    this.OptomaStates.On = value as boolean;
 
     this.platform.log.debug("Set Characteristic On ->", value);
   }
@@ -147,12 +147,12 @@ export class ExamplePlatformAccessory {
    * If your device takes time to respond you should update the status of your device
    * asynchronously instead using the `updateCharacteristic` method instead.
 
-   * @example
+   * @Optoma
    * this.service.updateCharacteristic(this.platform.Characteristic.On, true)
    */
   async getOn(): Promise<CharacteristicValue> {
     // implement your own code to check if the device is on
-    const isOn = this.exampleStates.On;
+    const isOn = this.OptomaStates.On;
 
     this.platform.log.debug("Get Characteristic On ->", isOn);
 
@@ -164,11 +164,11 @@ export class ExamplePlatformAccessory {
 
   /**
    * Handle "SET" requests from HomeKit
-   * These are sent when the user changes the state of an accessory, for example, changing the Brightness
+   * These are sent when the user changes the state of an accessory, for Optoma, changing the Brightness
    */
   async setBrightness(value: CharacteristicValue) {
     // implement your own code to set the brightness
-    this.exampleStates.Brightness = value as number;
+    this.OptomaStates.Brightness = value as number;
 
     this.platform.log.debug("Set Characteristic Brightness -> ", value);
   }
